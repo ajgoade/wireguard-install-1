@@ -91,7 +91,8 @@ if [ ! -f "$WG_CONFIG" ]; then
         printf 'Package: *\nPin: release a=unstable\nPin-Priority: 90\n' > /etc/apt/preferences.d/limit-unstable
 		apt-get install software-properties-common -y
 		apt update
-		apt install linux-headers-$(uname -r) wireguard qrencode iptables-persistent -y
+		apt install wireguard -y
+		apt install libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config qrencode iptables-persistent -y
     elif [ "$DISTRO" == "CentOS" ]; then
         curl -Lo /etc/yum.repos.d/wireguard.repo https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/epel-7/jdoss-wireguard-epel-7.repo
         yum install epel-release -y
