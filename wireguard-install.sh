@@ -83,8 +83,7 @@ if [ ! -f "$WG_CONFIG" ]; then
     if [ "$DISTRO" == "Ubuntu" ]; then
 	apt-get install software-properties-common -y
 	#REMOVED 20211022 add-apt-repository ppa:wireguard/wireguard -y
-	#ADDED to try to get past 404 ERROR
-	apt -o Acquire::ForceIPv4=true update
+	apt update
 	apt install wireguard -y
 	apt install libmnl-dev libelf-dev linux-headers-$(uname -r) build-essential pkg-config qrencode iptables-persistent -y
 	#systemctl enable --now systemd-resolved
